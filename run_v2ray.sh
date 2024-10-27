@@ -29,7 +29,7 @@ sudo systemctl status nginx
 
 # 启动frp
 pushd frp_0.61.0_linux_amd64
-frp_name="github-actions-frp-xray-$(date +%s)"
+frp_name="github_actions_frp_xray_$(date +%s)"
 # frp有点坑，不同起相同的任务名字，所以按时间生成一个名字，然后修改到frpc.toml中
 perl -pi -e "s/(name = \")(.*)(\")/\1\$ENV{frp_name}\3/g" frpc.toml
 ./frpc -c frpc.toml &
