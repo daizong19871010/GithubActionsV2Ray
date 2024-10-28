@@ -8,4 +8,4 @@ name = "xray_43.135.118.188"
 type = "tcp"
 localIP = "127.0.0.1"
 localPort = 443
-remotePort = 5772
+remotePort = 5773
