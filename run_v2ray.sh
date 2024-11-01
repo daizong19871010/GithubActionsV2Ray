@@ -1,6 +1,8 @@
 #!/bin/bash
 
 echo "whoami: $(whoami)"
+ip=$(curl ipinfo.io/ip)
+echo "ip: ${ip}"
 sudo apt-get update
 
 # 安装xray
