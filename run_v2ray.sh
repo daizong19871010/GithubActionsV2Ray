@@ -48,14 +48,14 @@ lsof -i:5759
 
 # 打印日志
 while true; do
-    echo "cat /var/log/nginx/access.log"
-    cat /var/log/nginx/access.log
+    # echo "cat /var/log/nginx/access.log"
+    # cat /var/log/nginx/access.log
 
-    echo "/var/log/xray/access.log"
-    sudo cat /var/log/xray/access.log
+    # echo "/var/log/xray/access.log"
+    # sudo cat /var/log/xray/access.log
 
-    echo "/var/log/xray/error.log"
-    sudo cat /var/log/xray/error.log
+    # echo "/var/log/xray/error.log"
+    # sudo cat /var/log/xray/error.log
 
     sleep 20
 done
