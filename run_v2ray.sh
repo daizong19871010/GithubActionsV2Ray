@@ -45,3 +45,5 @@ ps -ef | grep "xray"
 
 echo "lsof -i:5759"
 lsof -i:5759
+
+exit 0
