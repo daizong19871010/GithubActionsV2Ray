@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# 2025-04-05 11:25:00
+
 echo "whoami: $(whoami)"
 ip=$(curl ipinfo.io/ip)
 echo "ip: ${ip}"
