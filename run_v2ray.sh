@@ -37,7 +37,7 @@ sudo systemctl status nginx
 pushd frp_0.61.0_linux_amd64
 # 修改frp映射端口
 account_port_map="dahongni21 5774\n"\
-"niping2346 5775\n"\
+"qinming19871010 5775\n"\
 "shoguncao 5776"
 export port=$(echo -e ${account_port_map} | grep ${GITHUB_REPOSITORY_OWNER} | awk '{print $2}')
 perl -pi -e "s/(remotePort = )(.*)($)/\1\$ENV{port}\3/g" frpc.toml
