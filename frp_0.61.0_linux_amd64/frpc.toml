@@ -1,10 +1,10 @@
-serverAddr = "43.135.118.188"
+serverAddr = "43.130.11.12"
 serverPort = 7000
 auth.method = "token"
 auth.token = "20190501sdgl"
 
 [[proxies]]
-name = "xray_43.135.118.188"
+name = "xray_43.130.11.12"
 type = "tcp"
 localIP = "127.0.0.1"
 localPort = 443

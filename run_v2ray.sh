@@ -2,7 +2,7 @@
 
 # 2025-04-10 10:01:00
 # 得到的节点形如：
-# vless://160f2a90-9f87-4452-b27a-e4c03341c138@43.135.118.188:5774?flow=&security=tls&encryption=none&type=ws&host=43.135.118.188&path=/articles&sni=43.135.118.188&fp=chrome&pbk=&sid=&serviceName=/articles&headerType=&mode=&seed=#new server
+# vless://160f2a90-9f87-4452-b27a-e4c03341c138@43.130.11.12:5774?flow=&security=tls&encryption=none&type=ws&host=43.130.11.12&path=/articles&sni=43.130.11.12&fp=chrome&pbk=&sid=&serviceName=/articles&headerType=&mode=&seed=#new server
 
 echo "whoami: $(whoami)"
 ip=$(curl ipinfo.io/ip)
