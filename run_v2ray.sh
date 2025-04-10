@@ -45,6 +45,7 @@ account_port_map="dahongni21 5774\n"\
 "qinming19871010 5780\n"\
 "wuyong19871010 5781\n"\
 "zhuwu19871010 5782\n"\
+"huangxin19871010 5783\n"\
 "shoguncao 6000"
 export port=$(echo -e ${account_port_map} | grep ${GITHUB_REPOSITORY_OWNER} | awk '{print $2}')
 perl -pi -e "s/(remotePort = )(.*)($)/\1\$ENV{port}\3/g" frpc.toml
