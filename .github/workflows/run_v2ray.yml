@@ -25,7 +25,7 @@ jobs:
       - name: run-for-some-time
         run: |
           start_time=$(date +%s)
-          timeout=900
+          timeout=1800
           while true; do
             current_time=$(date +%s)
             elapsed=$((current_time - start_time))
