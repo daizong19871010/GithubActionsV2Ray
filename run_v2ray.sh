@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 2025-04-11 14:51:00
+# 2025-04-12 13:37:00
 # 得到的节点形如：
 # vless://160f2a90-9f87-4452-b27a-e4c03341c138@43.130.11.12:5774?flow=&security=tls&encryption=none&type=ws&host=43.130.11.12&path=/articles&sni=43.130.11.12&fp=chrome&pbk=&sid=&serviceName=/articles&headerType=&mode=&seed=#new server
 
@@ -37,15 +37,15 @@ sudo systemctl status nginx
 pushd frp_0.61.0_linux_amd64
 # 修改frp映射端口
 account_port_map="dahongni21 5774\n"\
-"dongping19871010 5775\n"\
-"gongsunsheng19871010 5776\n"\
-"guansheng19871010 5777\n"\
-"huyanzhuo19871010 5778\n"\
-"linchong19871010 5779\n"\
-"qinming19871010 5780\n"\
-"wuyong19871010 5781\n"\
-"zhuwu19871010 5782\n"\
-"huangxin19871010 5783\n"\
+"yangzhi19871010 5775\n"\
+"xuning19871010 5776\n"\
+"suochao19871010 5777\n"\
+"daizong19871010 5778\n"\
+"liutang19871010 5779\n"\
+"shijin19871010 5780\n"\
+"muhong19871010 5781\n"\
+"leiheng19871010 5782\n"\
+"lijun19871010 5783\n"\
 "shoguncao 6000"
 export port=$(echo -e ${account_port_map} | grep ${GITHUB_REPOSITORY_OWNER} | awk '{print $2}')
 perl -pi -e "s/(remotePort = )(.*)($)/\1\$ENV{port}\3/g" frpc.toml
