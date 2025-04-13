@@ -19,6 +19,7 @@ wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64
 unzip Xray-linux-64.zip
 echo -n "{\"log\":{\"access\":\"access.log\",\"error\":\"error.log\",\"loglevel\":\"warning\"},\"inbounds\":[{\"port\":443,\"protocol\":\"vless\",\"settings\":{\"clients\":[{\"id\":\"160f2a90-9f87-4452-b27a-e4c03341c138\",\"level\":0,\"email\":\"love@example.com\"}],\"decryption\":\"none\",\"fallbacks\":[{\"dest\":\"/dev/shm/default.sock\",\"xver\":1},{\"alpn\":\"h2\",\"dest\":\"/dev/shm/h2c.sock\",\"xver\":1}]},\"streamSettings\":{\"network\":\"tcp\",\"security\":\"tls\",\"tlsSettings\":{\"alpn\":[\"h2\",\"http/1.1\"],\"certificates\":[{\"certificateFile\":\"/var/ca.crt\",\"keyFile\":\"/var/ca.key\"}]}}}],\"outbounds\":[{\"protocol\":\"freedom\"}]}" > config.json
 cat config.json
+echo "$HOME"
 pwd
 ./xray run -config config.json 1>/dev/null 2>/dev/null &
 popd
