@@ -48,6 +48,8 @@ echo "cat access.log"
 cat /home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/access.log
 echo "cat error.log"
 cat /home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/error.log
+ps -ef | grep xray
+ps -ef | grep frp
 sleep 10
 done
 
