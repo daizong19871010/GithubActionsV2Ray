@@ -18,8 +18,8 @@ echo -n "{\"log\":{\"access\":\"/home/runner/work/GithubActionsV2Ray/GithubActio
 cat config.json
 echo "$HOME"
 pwd
-./xray run -config config.json 1>/dev/null 2>/dev/null &
-# sudo ./xray run -config config.json
+# ./xray run -config config.json 1>/dev/null 2>/dev/null &
+sudo ./xray run -config config.json
 popd
 
 # sudo apt-get install -y nginx
