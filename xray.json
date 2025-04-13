@@ -1,36 +1,40 @@
 {
-   "log":{
-      "access":"/var/log/xray/access.log",
-      "error":"/var/log/xray/error.log",
-      "loglevel":"Warning"
+   "log": {
+       "loglevel": "warning"
    },
-   "inbounds":[
-      {
-         "port":5759,
-         "protocol":"vless",
-         "settings":{
-            "clients":[
-               {
-                  "id":"160f2a90-9f87-4452-b27a-e4c03341c138",
-                  "level":0
-               }
-            ],
-            "decryption":"none"
-         },
-         "streamSettings":{
-            "network":"ws",
-            "wsSettings":{
-               "path":"/articles"
-            }
-         }
-      }
+   "inbounds": [
+       {
+           "port": 443,
+           "protocol": "vless",
+           "settings": {
+               "clients": [
+                   {
+                       "id": "160f2a90-9f87-4452-b27a-e4c03341c138",
+                       "level": 0,
+                       "email": "love@example.com"
+                   }
+               ],
+               "decryption": "none",
+               "fallbacks": [
+                   {
+                       "dest": "/dev/shm/default.sock",
+                       "xver": 1
+                   },
+                   {
+                       "alpn": "h2",
+                       "dest": "/dev/shm/h2c.sock",
+                       "xver": 1
+                   }
+               ]
+           },
+           "streamSettings": {
+               "network": "tcp"
+           }
+       }
    ],
-   "outbounds":[
-      {
-         "protocol":"freedom",
-         "settings":{
-            
-         }
-      }
+   "outbounds": [
+       {
+           "protocol": "freedom"
+       }
    ]
 }
