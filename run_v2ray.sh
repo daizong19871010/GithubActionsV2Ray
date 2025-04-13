@@ -8,6 +8,20 @@ pushd frp_0.61.0_linux_amd64
 ./frpc -c frpc.toml &
 popd
 
+sudo apt-get install -y nginx
+sudo rm -rf /etc/nginx/nginx.conf
+sudo cp nginx.conf /etc/nginx
+pushd /etc/nginx
+sudo openssl ecparam -genkey -name prime256v1 -out ca.key
+sudo openssl req -new -x509 -days 36500 -key ca.key -out ca.crt  -subj "/CN=bing.com"
+popd
+echo "exe nginx -V"
+nginx -V
+echo "cat /etc/nginx/nginx.conf"
+cat /etc/nginx/nginx.conf
+sudo systemctl restart nginx
+sudo systemctl status nginx
+
 start_time=$(date +%s)
 timeout=1800
 while true; do
