@@ -17,7 +17,7 @@ mkdir -p xray
 pushd xray
 wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64.zip
 unzip Xray-linux-64.zip
-echo -n "{\"log\":{\"access\":\"/var/log/xray/access.log\",\"error\":\"/var/log/xray/error.log\",\"loglevel\":\"warning\"},\"inbounds\":[{\"port\":443,\"protocol\":\"vless\",\"settings\":{\"clients\":[{\"id\":\"160f2a90-9f87-4452-b27a-e4c03341c138\",\"level\":0,\"email\":\"love@example.com\"}],\"decryption\":\"none\",\"fallbacks\":[{\"dest\":\"/dev/shm/default.sock\",\"xver\":1},{\"alpn\":\"h2\",\"dest\":\"/dev/shm/h2c.sock\",\"xver\":1}]},\"streamSettings\":{\"network\":\"tcp\",\"security\":\"tls\",\"tlsSettings\":{\"alpn\":[\"h2\",\"http/1.1\"],\"certificates\":[{\"certificateFile\":\"/var/ca.crt\",\"keyFile\":\"/var/ca.key\"}]}}}],\"outbounds\":[{\"protocol\":\"freedom\"}]}" > config.json
+echo -n "{\"log\":{\"access\":\"/var/access.log\",\"error\":\"/var/error.log\",\"loglevel\":\"warning\"},\"inbounds\":[{\"port\":443,\"protocol\":\"vless\",\"settings\":{\"clients\":[{\"id\":\"160f2a90-9f87-4452-b27a-e4c03341c138\",\"level\":0,\"email\":\"love@example.com\"}],\"decryption\":\"none\",\"fallbacks\":[{\"dest\":\"/dev/shm/default.sock\",\"xver\":1},{\"alpn\":\"h2\",\"dest\":\"/dev/shm/h2c.sock\",\"xver\":1}]},\"streamSettings\":{\"network\":\"tcp\",\"security\":\"tls\",\"tlsSettings\":{\"alpn\":[\"h2\",\"http/1.1\"],\"certificates\":[{\"certificateFile\":\"/var/ca.crt\",\"keyFile\":\"/var/ca.key\"}]}}}],\"outbounds\":[{\"protocol\":\"freedom\"}]}" > config.json
 cat config.json
 ./xray run -config config.json 1>/dev/null 2>/dev/null &
 popd
@@ -44,10 +44,10 @@ fi
 echo "运行中... 已过时间：${elapsed}秒"
 echo "cat frp_0.61.0_linux_amd64/frpc.log"
 cat frp_0.61.0_linux_amd64/frpc.log
-echo "cat /var/log/xray/access.log"
-cat /var/log/xray/access.log
-echo "cat /var/log/xray/error.log"
-cat /var/log/xray/error.log
+echo "cat /var/access.log"
+cat /var/access.log
+echo "cat /var/error.log"
+cat /var/error.log
 sleep 10
 done
 
