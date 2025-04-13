@@ -1,11 +1,11 @@
 serverAddr = "43.130.11.12"
-serverPort = 7000
+serverPort = 2053
 auth.method = "token"
 auth.token = "20190501sdgl"
 
 [[proxies]]
-name = "xray_43.130.11.12"
-type = "tcp"
+name = "rdp"
+type = "stcp"
+secretKey = "20190501sdgl"
 localIP = "127.0.0.1"
 localPort = 443
-remotePort = 5774
