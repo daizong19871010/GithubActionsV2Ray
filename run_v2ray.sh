@@ -32,7 +32,10 @@ if [ "$elapsed" -ge "$timeout" ]; then
     break
 fi
 echo "运行中... 已过时间：${elapsed}秒"
+echo "cat frp_0.61.0_linux_amd64/frpc.log"
 cat frp_0.61.0_linux_amd64/frpc.log
+echo "cat /var/log/nginx/access.log"
+cat /var/log/nginx/access.log
 sleep 10
 done
 
