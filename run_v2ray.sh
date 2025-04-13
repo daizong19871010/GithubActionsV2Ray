@@ -17,7 +17,7 @@ mkdir -p xray
 pushd xray
 wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64.zip
 unzip Xray-linux-64.zip
-echo -n "{\"log\":{\"access\":\"access.log\",\"error\":\"error.log\",\"loglevel\":\"warning\"},\"inbounds\":[{\"port\":443,\"protocol\":\"vless\",\"settings\":{\"clients\":[{\"id\":\"160f2a90-9f87-4452-b27a-e4c03341c138\",\"level\":0,\"email\":\"love@example.com\"}],\"decryption\":\"none\",\"fallbacks\":[{\"dest\":\"/dev/shm/default.sock\",\"xver\":1},{\"alpn\":\"h2\",\"dest\":\"/dev/shm/h2c.sock\",\"xver\":1}]},\"streamSettings\":{\"network\":\"tcp\",\"security\":\"tls\",\"tlsSettings\":{\"alpn\":[\"h2\",\"http/1.1\"],\"certificates\":[{\"certificateFile\":\"/var/ca.crt\",\"keyFile\":\"/var/ca.key\"}]}}}],\"outbounds\":[{\"protocol\":\"freedom\"}]}" > config.json
+echo -n "{\"log\":{\"access\":\"/home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/access.log\",\"error\":\"/home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/error.log\",\"loglevel\":\"warning\"},\"inbounds\":[{\"port\":443,\"protocol\":\"vless\",\"settings\":{\"clients\":[{\"id\":\"160f2a90-9f87-4452-b27a-e4c03341c138\",\"level\":0,\"email\":\"love@example.com\"}],\"decryption\":\"none\",\"fallbacks\":[{\"dest\":\"/dev/shm/default.sock\",\"xver\":1},{\"alpn\":\"h2\",\"dest\":\"/dev/shm/h2c.sock\",\"xver\":1}]},\"streamSettings\":{\"network\":\"tcp\",\"security\":\"tls\",\"tlsSettings\":{\"alpn\":[\"h2\",\"http/1.1\"],\"certificates\":[{\"certificateFile\":\"/var/ca.crt\",\"keyFile\":\"/var/ca.key\"}]}}}],\"outbounds\":[{\"protocol\":\"freedom\"}]}" > config.json
 cat config.json
 echo "$HOME"
 pwd
@@ -47,9 +47,9 @@ echo "运行中... 已过时间：${elapsed}秒"
 echo "cat frp_0.61.0_linux_amd64/frpc.log"
 cat frp_0.61.0_linux_amd64/frpc.log
 echo "cat access.log"
-cat access.log
+cat /home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/access.log
 echo "cat error.log"
-cat error.log
+cat /home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/error.log
 sleep 10
 done
 
