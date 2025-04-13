@@ -19,7 +19,7 @@ cat config.json
 echo "$HOME"
 pwd
 # ./xray run -config config.json 1>/dev/null 2>/dev/null &
-./xray run -config config.json
+sudo ./xray run -config config.json
 popd
 
 # sudo apt-get install -y nginx
