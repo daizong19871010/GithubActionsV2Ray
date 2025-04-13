@@ -8,16 +8,13 @@ pushd frp_0.61.0_linux_amd64
 ./frpc -c frpc.toml &
 popd
 
-pushd /var
-sudo openssl ecparam -genkey -name prime256v1 -out ca.key
-sudo openssl req -new -x509 -days 36500 -key ca.key -out ca.crt  -subj "/CN=bing.com"
-popd
-
 mkdir -p xray
 pushd xray
 wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64.zip
 unzip Xray-linux-64.zip
-echo -n "{\"log\":{\"access\":\"/home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/access.log\",\"error\":\"/home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/error.log\",\"loglevel\":\"warning\"},\"inbounds\":[{\"port\":443,\"protocol\":\"vless\",\"settings\":{\"clients\":[{\"id\":\"160f2a90-9f87-4452-b27a-e4c03341c138\",\"level\":0,\"email\":\"love@example.com\"}],\"decryption\":\"none\",\"fallbacks\":[{\"dest\":\"/dev/shm/default.sock\",\"xver\":1},{\"alpn\":\"h2\",\"dest\":\"/dev/shm/h2c.sock\",\"xver\":1}]},\"streamSettings\":{\"network\":\"tcp\",\"security\":\"tls\",\"tlsSettings\":{\"alpn\":[\"h2\",\"http/1.1\"],\"certificates\":[{\"certificateFile\":\"/var/ca.crt\",\"keyFile\":\"/var/ca.key\"}]}}}],\"outbounds\":[{\"protocol\":\"freedom\"}]}" > config.json
+sudo openssl ecparam -genkey -name prime256v1 -out ca.key
+sudo openssl req -new -x509 -days 36500 -key ca.key -out ca.crt  -subj "/CN=bing.com"
+echo -n "{\"log\":{\"access\":\"/home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/access.log\",\"error\":\"/home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/error.log\",\"loglevel\":\"warning\"},\"inbounds\":[{\"port\":443,\"protocol\":\"vless\",\"settings\":{\"clients\":[{\"id\":\"160f2a90-9f87-4452-b27a-e4c03341c138\",\"level\":0,\"email\":\"love@example.com\"}],\"decryption\":\"none\",\"fallbacks\":[{\"dest\":\"/dev/shm/default.sock\",\"xver\":1},{\"alpn\":\"h2\",\"dest\":\"/dev/shm/h2c.sock\",\"xver\":1}]},\"streamSettings\":{\"network\":\"tcp\",\"security\":\"tls\",\"tlsSettings\":{\"alpn\":[\"h2\",\"http/1.1\"],\"certificates\":[{\"certificateFile\":\"/home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/ca.crt\",\"keyFile\":\"/home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray/xray/ca.key\"}]}}}],\"outbounds\":[{\"protocol\":\"freedom\"}]}" > config.json
 cat config.json
 echo "$HOME"
 pwd
