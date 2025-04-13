@@ -36,6 +36,8 @@ echo "cat frp_0.61.0_linux_amd64/frpc.log"
 cat frp_0.61.0_linux_amd64/frpc.log
 echo "cat /var/log/nginx/access.log"
 cat /var/log/nginx/access.log
+echo "cat /etc/nginx/nginx.conf"
+cat /etc/nginx/nginx.conf
 sleep 10
 done
 
