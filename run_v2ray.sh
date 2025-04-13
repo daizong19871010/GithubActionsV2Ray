@@ -5,7 +5,21 @@
 # vless://160f2a90-9f87-4452-b27a-e4c03341c138@43.130.11.12:5774?flow=&security=tls&encryption=none&type=ws&host=43.130.11.12&path=/articles&sni=43.130.11.12&fp=chrome&pbk=&sid=&serviceName=/articles&headerType=&mode=&seed=#new server
 
 pushd frp_0.61.0_linux_amd64
-./frpc -c frpc.toml
+./frpc -c frpc.toml &
 popd
+
+start_time=$(date +%s)
+timeout=1800
+while true; do
+current_time=$(date +%s)
+elapsed=$((current_time - start_time))
+if [ "$elapsed" -ge "$timeout" ]; then
+    echo "循环已执行${elapsed}秒，退出"
+    break
+fi
+echo "运行中... 已过时间：${elapsed}秒"
+cat frp_0.61.0_linux_amd64/frpc.log
+sleep 10
+done
 
 exit 0
