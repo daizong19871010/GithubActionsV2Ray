@@ -22,7 +22,7 @@ sudo echo "cat authorized_keys"
 sudo cat authorized_keys
 cd ~
 
-sudo systemctl start sshd
+sudo systemctl start ssh
 echo "lsof -i:22"
 lsof -i:22
 echo "ps -ef | grep ssh"
