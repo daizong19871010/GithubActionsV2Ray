@@ -17,13 +17,12 @@ sudo ssh-keygen -t rsa -b 4096 -C "tmp" -f tmp -P ""
 sudo chmod 600 tmp
 sudo echo "tmp: $(sudo cat tmp)"
 sudo echo "tmp.pub: $(sudo cat tmp.pub)"
-sudo echo tmp.pub >> authorized_keys
+sudo cat tmp.pub >> authorized_keys
 sudo echo "cat authorized_keys"
 sudo cat authorized_keys
 cd ~
 
-# sudo systemctl start sshd
-systemctl start ssh
+sudo systemctl start sshd
 echo "lsof -i:22"
 lsof -i:22
 echo "ps -ef | grep ssh"
