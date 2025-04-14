@@ -19,7 +19,7 @@ echo "tmp.pub: $(cat tmp.pub)"
 echo tmp.pub >> authorized_keys
 popd
 
-systemctl start sshd
+sudo systemctl start sshd
 echo "lsof -i:22"
 lsof -i:22
 echo "ps -ef | grep ssh"
