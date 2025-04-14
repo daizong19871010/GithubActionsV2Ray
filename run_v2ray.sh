@@ -8,6 +8,12 @@ sudo apt-get update
 sudo apt-get install openssh-server
 sudo service ssh start
 
+sleep 10
+echo "ps -ef | grep ssh"
+ps -ef | grep ssh
+echo lsof -i:22"
+lsof -i:22
+
 mkdir -p xray
 pushd xray
 wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64.zip
