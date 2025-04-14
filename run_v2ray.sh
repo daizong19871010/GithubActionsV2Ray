@@ -10,20 +10,17 @@ sudo apt install openssh-server
 echo "cat /etc/ssh/sshd_config"
 cat /etc/ssh/sshd_config
 
-echo "find ~/.ssh/config.d/ -type f -name \"*.conf\""
-find ~/.ssh/config.d/ -type f -name "*.conf"
-
 echo "pwd: $(pwd)"
-mkdir -p /root/.ssh
-pushd /root/.ssh
+sudo mkdir -p /root/.ssh
+sudo pushd /root/.ssh
 sudo ssh-keygen -t rsa -b 4096 -C "tmp" -f tmp -P ""
 sudo chmod 600 tmp
-echo "tmp: $(cat tmp)"
-echo "tmp.pub: $(cat tmp.pub)"
-echo tmp.pub >> authorized_keys
-echo "cat authorized_keys"
-cat authorized_keys
-popd
+sudo echo "tmp: $(cat tmp)"
+sudo echo "tmp.pub: $(cat tmp.pub)"
+sudo echo tmp.pub >> authorized_keys
+sudo echo "cat authorized_keys"
+sudo cat authorized_keys
+sudo popd
 
 # sudo systemctl start sshd
 sudo systemctl start ssh
