@@ -12,11 +12,11 @@ cat /etc/ssh/sshd_config
 
 echo "pwd: $(pwd)"
 sudo mkdir -p /root/.ssh
-sudo cd /root/.ssh
+sudo -i cd /root/.ssh
 sudo ssh-keygen -t rsa -b 4096 -C "tmp" -f tmp -P ""
 sudo chmod 600 tmp
-sudo echo "tmp: $(cat tmp)"
-sudo echo "tmp.pub: $(cat tmp.pub)"
+sudo echo "tmp: $(sudo cat tmp)"
+sudo echo "tmp.pub: $(sudo cat tmp.pub)"
 sudo echo tmp.pub >> authorized_keys
 sudo echo "cat authorized_keys"
 sudo cat authorized_keys
