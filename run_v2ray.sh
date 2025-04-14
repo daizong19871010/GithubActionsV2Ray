@@ -11,7 +11,7 @@ sudo service ssh start
 sleep 10
 echo "ps -ef | grep ssh"
 ps -ef | grep ssh
-echo lsof -i:22"
+echo "lsof -i:22"
 lsof -i:22
 
 mkdir -p xray
