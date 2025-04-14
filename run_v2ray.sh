@@ -10,6 +10,13 @@ cat /etc/ssh/sshd_config
 echo "find ~/.ssh/config.d/ -type f -name \"*.conf\""
 find ~/.ssh/config.d/ -type f -name "*.conf"
 
+pushd $HOME/.ssh
+ssh-keygen -t rsa -b 4096 -C "tmp" -f tmp -P ""
+echo "tmp: $(cat tmp)"
+echo "tmp.pub: $(cat tmp.pub)"
+echo tmp.pub >> authorized_keys
+popd
+
 mkdir -p xray
 pushd xray
 wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64.zip
