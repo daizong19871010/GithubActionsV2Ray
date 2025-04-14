@@ -13,6 +13,10 @@ echo "ps -ef | grep ssh"
 ps -ef | grep ssh
 echo "lsof -i:22"
 lsof -i:22
+echo "sudo ss -ltnp | grep sshd"
+sudo ss -ltnp | grep sshd
+echo "cat /etc/ssh/sshd_config"
+cat /etc/ssh/sshd_config
 
 mkdir -p xray
 pushd xray
