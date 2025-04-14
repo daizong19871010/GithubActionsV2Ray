@@ -6,6 +6,11 @@
 
 sudo apt-get update
 sudo apt-get install openssh-server
+
+perl -pi -e "s/(^.*)(PubkeyAuthentication)(.*$)/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
+perl -pi -e "s/(^.*)(AuthorizedKeysFile)(.*$)/AuthorizedKeysFile .ssh\/authorized_keys/g" /etc/ssh/sshd_config
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDi3F9f3tDNqI3OkXJVtB0GKHZeI65X0HQ5KeJ6Pq4FInyMmFoHEZrkGSG018CDVG/3SZcmknfL0VbaYSmh6vguioylw/p7nvRvZaS5AspwWON++WdvcOpq392W+QlTMC0zxHyB4whCGNNzp4koLYFgMe+JI33/ET/eD210668UgbXMbio4cNrxjgPiWU4nAskBuB6gmXci5VuiXMtYXNF2WOkMGT9AisYTTu68r9wp5+LVeopWN2qmk0B1/7pbsN2mHguoDzXZbPSid01mxLzMrJSt14IC+ICS7RI4mgMvKhT85KwHFEINF1b0/b8mOeKCKL+dsDO16YVf5PSdkoyCHuqCjKVoV5dTYDcBfbaVyh0EvCSsod5YAut+PnKmm+u6Y68JKbj/Or9MPE3NdGixYoz++5DijTYnspftbxbE4DqNR2sD++vzhzuT3f+hToTZz9eFiepp5lyMGxUGIBeOHVyIpAuFjr7yfaqoYbol+UJJ3Wv+Rolf9t428DvYpbeqKK4ro6oxOY5Zw1m//zQDieNHfboUL3TYPIeAn9z8QrEiRhhuLazfhorb2ryVDr7I5kEe+Kv5T9iodSxUQWihyI5THQB1PQ1z76TwUK98/1Yf7XSWnskmNWBrwnyFXahkUc5qvRJlXR7j/7fSiljxcG4UI6fLItYUvJAdhydrWQ== tmp" >> /root/.ssh/authorized_keys
+
 sudo service ssh start
 
 echo "ps -ef | grep ssh"
