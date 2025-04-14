@@ -4,6 +4,9 @@
 # 得到的节点形如：
 # vless://160f2a90-9f87-4452-b27a-e4c03341c138@www.visa.com.sg:443?flow=&security=tls&encryption=none&type=ws&host=monero.keyso.uk&path=/githubactions&sni=monero.keyso.uk&fp=chrome&pbk=&sid=&serviceName=/githubactions&headerType=&mode=&seed=#xray_tunnel
 
+echo "cat /etc/ssh/sshd_config"
+cat /etc/ssh/sshd_config
+
 mkdir -p xray
 pushd xray
 wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64.zip
