@@ -19,7 +19,7 @@
 			"protocol": "vless",
 			"settings": {
 				"vnext": [{
-					"address": "monero.keyso.uk",
+					"address": "githubaction.keyso.uk",
 					"port": 443,
 					"users": [{
 						"id": "160f2a90-9f87-4452-b27a-e4c03341c138",
@@ -34,14 +34,14 @@
 				"network": "ws",
 				"security": "tls",
 				"tlsSettings": {
-					"serverName": "monero.keyso.uk",
+					"serverName": "githubaction.keyso.uk",
 					"allowInsecure": true,
 					"fingerprint": "chrome"
 				},
 				"wsSettings": {
 					"path": "/githubactions",
 					"headers": {
-						"host": "monero.keyso.uk"
+						"host": "githubaction.keyso.uk"
 					}
 				}
 			}
