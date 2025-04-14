@@ -14,12 +14,15 @@ echo "find ~/.ssh/config.d/ -type f -name \"*.conf\""
 find ~/.ssh/config.d/ -type f -name "*.conf"
 
 echo "pwd: $(pwd)"
-mkdir -p $HOME/.ssh
-pushd $HOME/.ssh
-ssh-keygen -t rsa -b 4096 -C "tmp" -f tmp -P ""
+mkdir -p /root/.ssh
+pushd /root/.ssh
+sudo ssh-keygen -t rsa -b 4096 -C "tmp" -f tmp -P ""
+sudo chmod 600 tmp
 echo "tmp: $(cat tmp)"
 echo "tmp.pub: $(cat tmp.pub)"
 echo tmp.pub >> authorized_keys
+echo "cat authorized_keys"
+cat authorized_keys
 popd
 
 # sudo systemctl start sshd
