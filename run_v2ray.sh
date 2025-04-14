@@ -7,6 +7,9 @@
 echo "cat /etc/ssh/sshd_config"
 cat /etc/ssh/sshd_config
 
+echo "find ~/.ssh/config.d/ -type f -name \"*.conf\""
+find ~/.ssh/config.d/ -type f -name "*.conf"
+
 mkdir -p xray
 pushd xray
 wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64.zip
