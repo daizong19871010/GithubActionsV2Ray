@@ -20,7 +20,8 @@ sudo echo "tmp.pub: $(sudo cat tmp.pub)"
 sudo cat tmp.pub >> authorized_keys
 sudo echo "cat authorized_keys"
 sudo cat authorized_keys
-cd ~
+
+cd /home/runner/work/GithubActionsV2Ray/GithubActionsV2Ray
 
 sudo systemctl start ssh
 echo "lsof -i:22"
