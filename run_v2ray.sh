@@ -6,7 +6,7 @@
 
 sudo apt-get update
 sudo apt-get install openssh-server
-sudo service sshd start
+sudo service ssh start
 
 mkdir -p xray
 pushd xray
