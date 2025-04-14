@@ -4,26 +4,28 @@
 # 得到的节点形如：
 # vless://160f2a90-9f87-4452-b27a-e4c03341c138@www.visa.com.sg:443?flow=&security=tls&encryption=none&type=ws&host=monero.keyso.uk&path=/githubactions&sni=monero.keyso.uk&fp=chrome&pbk=&sid=&serviceName=/githubactions&headerType=&mode=&seed=#xray_tunnel
 
-sudo apt update
-sudo apt install openssh-server
+sudo -i
+
+apt update
+apt install openssh-server
 
 echo "cat /etc/ssh/sshd_config"
 cat /etc/ssh/sshd_config
 
 echo "pwd: $(pwd)"
-sudo mkdir -p /root/.ssh
-sudo pushd /root/.ssh
-sudo ssh-keygen -t rsa -b 4096 -C "tmp" -f tmp -P ""
-sudo chmod 600 tmp
-sudo echo "tmp: $(cat tmp)"
-sudo echo "tmp.pub: $(cat tmp.pub)"
-sudo echo tmp.pub >> authorized_keys
-sudo echo "cat authorized_keys"
-sudo cat authorized_keys
-sudo popd
+mkdir -p /root/.ssh
+pushd /root/.ssh
+ssh-keygen -t rsa -b 4096 -C "tmp" -f tmp -P ""
+chmod 600 tmp
+echo "tmp: $(cat tmp)"
+echo "tmp.pub: $(cat tmp.pub)"
+echo tmp.pub >> authorized_keys
+echo "cat authorized_keys"
+cat authorized_keys
+popd
 
 # sudo systemctl start sshd
-sudo systemctl start ssh
+systemctl start ssh
 echo "lsof -i:22"
 lsof -i:22
 echo "ps -ef | grep ssh"
