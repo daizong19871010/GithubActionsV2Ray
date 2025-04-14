@@ -5,7 +5,7 @@
 # vless://160f2a90-9f87-4452-b27a-e4c03341c138@www.visa.com.sg:443?flow=&security=tls&encryption=none&type=ws&host=monero.keyso.uk&path=/githubactions&sni=monero.keyso.uk&fp=chrome&pbk=&sid=&serviceName=/githubactions&headerType=&mode=&seed=#xray_tunnel
 
 sudo apt-get update
-sudo apt-get install sshd
+sudo apt-get install openssh-server
 
 mkdir -p xray
 pushd xray
