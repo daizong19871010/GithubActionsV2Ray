@@ -2,7 +2,7 @@
 
 # 2025-04-15 00:20:00
 # 得到的节点形如：
-# vless://160f2a90-9f87-4452-b27a-e4c03341c138@www.visa.com.sg:443?flow=&security=tls&encryption=none&type=ws&host=githubaction.keyso.uk&path=/githubactions&sni=githubaction.keyso.uk&fp=chrome&pbk=&sid=&serviceName=/githubactions&headerType=&mode=&seed=#xray_tunnel
+# vless://160f2a90-9f87-4452-b27a-e4c03341c138@www.visa.com.sg:443?flow=&security=tls&encryption=none&type=ws&host=githubactions.keyso.uk&path=/githubactions&sni=githubactions.keyso.uk&fp=chrome&pbk=&sid=&serviceName=/githubactions&headerType=&mode=&seed=#xray_tunnel
 # ssh登录方式
 # ssh -vvv -i tmp -o "ProxyCommand=nc -x 127.0.0.1:1080 %h %p" root@127.0.0.1
 
