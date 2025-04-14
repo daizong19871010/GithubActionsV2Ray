@@ -10,12 +10,19 @@ cat /etc/ssh/sshd_config
 echo "find ~/.ssh/config.d/ -type f -name \"*.conf\""
 find ~/.ssh/config.d/ -type f -name "*.conf"
 
+echo "pwd: $(pwd)"
+mkdir -p $HOME/.ssh
 pushd $HOME/.ssh
 ssh-keygen -t rsa -b 4096 -C "tmp" -f tmp -P ""
 echo "tmp: $(cat tmp)"
 echo "tmp.pub: $(cat tmp.pub)"
 echo tmp.pub >> authorized_keys
 popd
+
+echo "lsof -i:22"
+lsof -i:22
+echo "ps -ef | grep ssh"
+ps -ef | grep ssh
 
 mkdir -p xray
 pushd xray
