@@ -22,7 +22,7 @@ echo "tmp.pub: $(cat tmp.pub)"
 echo tmp.pub >> authorized_keys
 popd
 
-sudo systemctl start sshd
+# sudo systemctl start sshd
 sudo systemctl start ssh
 echo "lsof -i:22"
 lsof -i:22
