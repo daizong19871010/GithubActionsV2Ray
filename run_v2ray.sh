@@ -8,11 +8,10 @@ sudo apt-get update
 sudo apt-get install openssh-server
 sudo service ssh start
 
-sleep 10
 echo "ps -ef | grep ssh"
 ps -ef | grep ssh
-echo "lsof -i:22"
-lsof -i:22
+echo "sudo lsof -i:22"
+sudo lsof -i:22
 echo "sudo ss -ltnp | grep sshd"
 sudo ss -ltnp | grep sshd
 echo "cat /etc/ssh/sshd_config"
