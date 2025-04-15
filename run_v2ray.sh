@@ -23,7 +23,7 @@ mkdir -p xray
 pushd xray
 wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64.zip
 unzip Xray-linux-64.zip
-sudo ./xray run -config ../xray.json
+sudo ./xray run -config ../xray.json > /dev/null
 popd
 
 exit 0
