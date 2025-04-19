@@ -3,8 +3,8 @@ const sodium = require('libsodium-wrappers')
 // 参考https://docs.github.com/zh/rest/actions/secrets?apiVersion=2022-11-28#get-an-organization-secret
 // 参考https://docs.github.com/zh/rest/guides/encrypting-secrets-for-the-rest-api?apiVersion=2022-11-28
 // 需运行npm install libsodium-wrappers。然后运行node gh_encode_secret.js
-const secret = 'YOUR_SECRET'
-const key = 'YOUR_BASE64_KEY'
+const key = process.argv[2]
+const secret = process.argv[3]
 
 //Check if libsodium is ready and then proceed.
 sodium.ready.then(() => {
