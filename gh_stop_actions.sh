@@ -34,7 +34,7 @@ function my_log() {
 
 parse_params $*
 
-command="curl -X POST -H 'Authorization: Bearer ${token}' -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' 'https://api.github.com/repos/${account_id}/${repo_name}/actions/runs/${actions_id}/cancel'"
+command="curl -X POST -H 'Authorization: Bearer ${token}' -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' 'https://api.github.com/repos/${account_id}/${repo_name}/actions/runs/${actions_id}/force-cancel'"
 echo "command: ${command}"
 eval "${command}"
 
