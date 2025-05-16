@@ -4,6 +4,15 @@
 		"error": "",
 		"loglevel": "error"
 	},
+	"dns": {
+		"servers": [
+			"1.1.1.1",
+			"8.8.8.8",
+			"localhost"
+		],
+		"disableCache": true,
+		"queryStrategy": "UseIP"
+	},
 	"reverse": {
 		"bridges": [{
 			"tag": "bridge",
