@@ -1,3 +1,0 @@
-2025/06/23 11:46:55 [Warning] core: Xray 24.11.11 started
-2025/06/23 11:55:52 [Warning] [2632493688] app/proxyman/inbound: connection ends > proxy/http: failed to read http request > malformed HTTP request "SSH-2.0-OpenSSH_9.2p1 Debian-2+deb12u3"
-2025/06/23 11:56:53 [Warning] [1723776735] app/proxyman/inbound: connection ends > proxy/http: failed to read http request > malformed HTTP request "SSH-2.0-OpenSSH_9.2p1 Debian-2+deb12u3"
