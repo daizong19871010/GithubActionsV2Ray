@@ -8,16 +8,6 @@ function parse_params() {
         elif [[ "${NEXT_VALUE_FOR_OPTION}" = "token" ]]; then
             token=${VAR}
             NEXT_VALUE_FOR_OPTION=""
-        elif [[ ${VAR} = "--account_id" ]]; then
-            NEXT_VALUE_FOR_OPTION="account_id"
-        elif [[ "${NEXT_VALUE_FOR_OPTION}" = "account_id" ]]; then
-            account_id=${VAR}
-            NEXT_VALUE_FOR_OPTION=""
-        elif [[ ${VAR} = "--repo_name" ]]; then
-            NEXT_VALUE_FOR_OPTION="repo_name"
-        elif [[ "${NEXT_VALUE_FOR_OPTION}" = "repo_name" ]]; then
-            repo_name=${VAR}
-            NEXT_VALUE_FOR_OPTION=""
         fi
     done
 }
@@ -27,7 +17,15 @@ function my_log() {
     echo -e "[${timestamp}] $1"
 }
 
+function get_account_id {
+    command="curl ${CURL_PROXY} -L -H \"Accept: application/vnd.github+json\" -H \"Authorization: Bearer ${token}\" -H \"X-GitHub-Api-Version: 2022-11-28\" https://api.github.com/user"
+    my_log "command: ${command}"
+    account_id=$(eval "${command}" | jq -r '.login')
+}
+
 parse_params $*
+repo_name="GithubActionsV2Ray"
+get_account_id
 
 # 获取所有工作流运行（分页处理）
 RUN_IDS=()
