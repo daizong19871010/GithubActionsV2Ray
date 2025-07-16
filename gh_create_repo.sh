@@ -8,16 +8,6 @@ function parse_params() {
         elif [[ "${NEXT_VALUE_FOR_OPTION}" = "token" ]]; then
             token=${VAR}
             NEXT_VALUE_FOR_OPTION=""
-        elif [[ ${VAR} = "--repo_name" ]]; then
-            NEXT_VALUE_FOR_OPTION="repo_name"
-        elif [[ "${NEXT_VALUE_FOR_OPTION}" = "repo_name" ]]; then
-            repo_name=${VAR}
-            NEXT_VALUE_FOR_OPTION=""
-        elif [[ ${VAR} = "--private" ]]; then
-            NEXT_VALUE_FOR_OPTION="private"
-        elif [[ "${NEXT_VALUE_FOR_OPTION}" = "private" ]]; then
-            private=${VAR}
-            NEXT_VALUE_FOR_OPTION=""
         fi
     done
 }
@@ -28,8 +18,9 @@ function my_log() {
 }
 
 parse_params $*
+repo_name="GithubActionsV2Ray"
 
-command="curl -X POST -H 'Authorization: token ${token}' -d '{\"name\":\"${repo_name}\", \"private\":${private}}' https://api.github.com/user/repos"
+command="curl -X POST -H 'Authorization: token ${token}' -d '{\"name\":\"${repo_name}\", \"private\":false}' https://api.github.com/user/repos"
 echo "command: ${command}"
 eval "${command}"
 
