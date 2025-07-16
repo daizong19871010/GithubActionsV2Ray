@@ -8,16 +8,6 @@ function parse_params() {
         elif [[ "${NEXT_VALUE_FOR_OPTION}" = "token" ]]; then
             token=${VAR}
             NEXT_VALUE_FOR_OPTION=""
-        elif [[ ${VAR} = "--account_id" ]]; then
-            NEXT_VALUE_FOR_OPTION="account_id"
-        elif [[ "${NEXT_VALUE_FOR_OPTION}" = "account_id" ]]; then
-            account_id=${VAR}
-            NEXT_VALUE_FOR_OPTION=""
-        elif [[ ${VAR} = "--repo_name" ]]; then
-            NEXT_VALUE_FOR_OPTION="repo_name"
-        elif [[ "${NEXT_VALUE_FOR_OPTION}" = "repo_name" ]]; then
-            repo_name=${VAR}
-            NEXT_VALUE_FOR_OPTION=""
         elif [[ ${VAR} = "--private" ]]; then
             NEXT_VALUE_FOR_OPTION="private"
         elif [[ "${NEXT_VALUE_FOR_OPTION}" = "private" ]]; then
@@ -32,7 +22,15 @@ function my_log() {
     echo -e "[${timestamp}] $1"
 }
 
+function get_account_id {
+    command="curl ${CURL_PROXY} -L -H \"Accept: application/vnd.github+json\" -H \"Authorization: Bearer ${token}\" -H \"X-GitHub-Api-Version: 2022-11-28\" https://api.github.com/user"
+    my_log "command: ${command}"
+    account_id=$(eval "${command}" | jq -r '.login')
+}
+
 parse_params $*
+repo_name="GithubActionsV2Ray"
+get_account_id
 
 command="curl -X PATCH -H 'Authorization: Bearer ${token}' -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' 'https://api.github.com/repos/${account_id}/${repo_name}' -d '{\"private\": ${private}}'"
 echo "command: ${command}"
