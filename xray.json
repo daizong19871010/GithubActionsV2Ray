@@ -1,79 +1,104 @@
 {
-	"log": {
-		"access": "",
-		"error": "",
-		"loglevel": "error"
-	},
-	"dns": {
-		"servers": [
-			"1.1.1.1",
-			"8.8.8.8",
-			"localhost"
-		],
-		"disableCache": true,
-		"queryStrategy": "UseIP"
-	},
-	"reverse": {
-		"bridges": [{
-			"tag": "bridge",
-			"domain": "private.cloud.com"
-		}]
-	},
-	"outbounds": [{
-			"tag": "bridgeout",
-			"protocol": "freedom"
-		},
-		{
-			"tag": "interconn",
-			"protocol": "vless",
-			"settings": {
-				"vnext": [{
-					"address": "githubactions.keyso.uk",
-					"port": 443,
-					"users": [{
-						"id": "160f2a90-9f87-4452-b27a-e4c03341c138",
-						"encryption": "none",
-						"security": "none",
-						"level": 0
-					}]
-				}],
-				"decryption": "none"
-			},
-			"streamSettings": {
-				"network": "ws",
-				"security": "tls",
-				"tlsSettings": {
-					"serverName": "githubactions.keyso.uk",
-					"allowInsecure": true,
-					"fingerprint": "chrome"
-				},
-				"wsSettings": {
-					"path": "/githubactions",
-					"headers": {
-						"host": "githubactions.keyso.uk"
-					}
-				}
-			}
-		}
-	],
-	"routing": {
-		"rules": [{
-				"type": "field",
-				"inboundTag": [
-					"bridge"
-				],
-				"domain": [
-					"full:private.cloud.com"
-				],
-				"outboundTag": "interconn"
-			},
-			{
-				"type": "field",
-				"inboundTag": [
-					"bridge"
-				],
-				"outboundTag": "bridgeout"
-			}
-		]
-	}
+  "log": {
+    "access": "",
+    "error": "",
+    "loglevel": "error"
+  },
+  "dns": {
+    "servers": [
+      "1.1.1.1",
+      "8.8.8.8",
+      "localhost"
+    ],
+    "disableCache": true,
+    "queryStrategy": "UseIP"
+  },
+  "reverse": {
+    "bridges": [
+      {
+        "tag": "bridge",
+        "domain": "private.cloud.com"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "tag": "bridgeout",
+      "protocol": "freedom"
+    },
+    {
+      "tag": "interconn",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "githubactions.keyso.uk",
+            "port": 443,
+            "users": [
+              {
+                "id": "160f2a90-9f87-4452-b27a-e4c03341c138",
+                "encryption": "none",
+                "security": "none",
+                "level": 0
+              }
+            ]
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "githubactions.keyso.uk",
+          "allowInsecure": true,
+          "fingerprint": "chrome"
+        },
+        "wsSettings": {
+          "path": "/githubactions",
+          "headers": {
+            "host": "githubactions.keyso.uk"
+          }
+        }
+      }
+    },
+    {
+      "tag": "local_proxy",
+      "protocol": "socks",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 10801
+          }
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "bridge"
+        ],
+        "domain": [
+          "full:private.cloud.com"
+        ],
+        "outboundTag": "interconn"
+      },
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "bridgeout"
+      },
+      {
+        "type": "field",
+        "network": "tcp,udp",
+        "outboundTag": "local_proxy"
+      }
+    ]
+  }
 }
