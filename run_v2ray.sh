@@ -7,6 +7,9 @@
 # ssh -i tmp -o "ProxyCommand=nc -x 127.0.0.1:1080 %h %p" -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" root@127.0.0.1
 # ssh -i xray_ssh_github_key -o "ProxyCommand=ncat --proxy-type socks5 --proxy 127.0.0.1:9001 %h %p" -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" root@127.0.0.1
 
+# 创建新的vpn出口
+# find configs -name "*.json" | sort -R | tail -n 1 | xargs -I fname cp fname ./config.json; cat config.json | jq '.inbounds[0].port = 10801' | tee config.json; ./xray run -config config.json
+
 sudo apt-get update
 sudo apt-get install openssh-server
 sudo perl -pi -e "s/(^.*)(PubkeyAuthentication)(.*$)/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
