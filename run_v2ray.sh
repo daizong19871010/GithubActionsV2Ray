@@ -7,8 +7,8 @@
 # ssh -i tmp -o "ProxyCommand=nc -x 127.0.0.1:1080 %h %p" -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" root@127.0.0.1
 # ssh -i xray_ssh_github_key -o "ProxyCommand=ncat --proxy-type socks5 --proxy 127.0.0.1:9001 %h %p" -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" root@127.0.0.1
 
-# 创建新的vpn出口
-# find configs -name "*.json" | sort -R | tail -n 1 | xargs -I fname cp fname ./config.json; cat config.json | jq '.inbounds[0].port = 10801' | tee config.json; ./xray run -config config.json
+# 拷贝xray_json_config_for_dig库
+# scp root@43.135.118.188:/root/.ssh/id_rsa ~/.ssh; chmod 600 ~/.ssh/id_rsa; git clone -b usdt git@github.com:shoguncao/xray_json_config_for_dig.git
 
 sudo apt-get update
 sudo apt-get install openssh-server
