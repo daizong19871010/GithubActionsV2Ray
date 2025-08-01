@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# current_version: 2025-07-31 11:14:05
+# current_version: 2025-08-01 12:16:33
 # 得到的节点形如：
 # vless://160f2a90-9f87-4452-b27a-e4c03341c138@www.visa.com.sg:443?flow=&security=tls&encryption=none&type=ws&host=githubactions.keyso.uk&path=/githubactions&sni=githubactions.keyso.uk&fp=chrome&pbk=&sid=&serviceName=/githubactions&headerType=&mode=&seed=#xray_tunnel
 # ssh登录方式
@@ -9,6 +9,9 @@
 
 # 拷贝xray_json_config_for_dig库
 # scp root@43.135.118.188:/root/.ssh/id_rsa ~/.ssh; chmod 600 ~/.ssh/id_rsa; git clone -b usdt git@github.com:shoguncao/xray_json_config_for_dig.git
+
+# 重启xray
+# systemctl restart xray@bridge; systemctl restart xray@xray_ssh_github_config.service
 
 sudo apt-get update
 sudo apt-get install openssh-server
