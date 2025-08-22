@@ -34,7 +34,8 @@ mkdir -p xray
 pushd xray
 wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64.zip
 unzip Xray-linux-64.zip
-sudo ./xray run -config ../xray.json > /dev/null
+sudo nohup ./xray run -config ../xray.json > /dev/null &
+sudo ./xray run -config ../bridge_guest.json > /dev/null
 popd
 
 exit 0

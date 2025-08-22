@@ -1,0 +1,43 @@
+{
+  "log": {
+    "loglevel": "debug",
+    "access": "./bridge_guest_access.log",
+    "error": "./bridge_guest_error.log"
+  },
+  "inbounds": [
+    {
+      "tag": "in",
+      "protocol": "socks",
+      "listen": "127.0.0.1",
+      "port": 7002,
+      "settings": {
+        "udp": true
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "socks",
+      "tag": "out",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 10801
+          }
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "in"
+        ],
+        "outboundTag": "out"
+      }
+    ]
+  }
+}
