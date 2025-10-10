@@ -89,15 +89,10 @@
       },
       {
         "type": "field",
-        "ip": [
-          "geoip:private"
+        "inboundTag": [
+          "bridge"
         ],
         "outboundTag": "bridgeout"
-      },
-      {
-        "type": "field",
-        "network": "tcp,udp",
-        "outboundTag": "local_proxy"
       }
     ]
   }
