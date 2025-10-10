@@ -1,7 +1,7 @@
 {
   "log": {
-    "access": "",
-    "error": "",
+    "access": "./xray_access.log",
+    "error": "./xray_error.log",
     "loglevel": "error"
   },
   "reverse": {
