@@ -15,7 +15,7 @@
 
 sudo apt-get update
 sudo apt-get install openssh-server
-sudo apt-get install proxychains
+# sudo apt-get install proxychains
 
 sudo perl -pi -e "s/socks4.*127\.0\.0\.1.*9050/socks5 127.0.0.1 10801/g" /etc/proxychains.conf
 
