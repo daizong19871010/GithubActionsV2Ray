@@ -1,0 +1,91 @@
+{
+  "log": {
+    "access": "/var/log/xray/xray_ssh_github_config_access.log",
+    "error": "/var/log/xray/xray_ssh_github_config_error.log",
+    "loglevel": "Warning"
+  },
+  "inbounds": [
+    {
+      "tag": "in",
+      "protocol": "socks",
+      "listen": "127.0.0.1",
+      "port": 9001,
+      "settings": {
+        "udp": true
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "out",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "www.visa.com.sg",
+            "port": 443,
+            "users": [
+              {
+                "id": "160f2a90-9f87-4452-b27a-e4c03341c138",
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "address": null,
+        "port": 0,
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": false,
+          "certificates": null,
+          "serverName": "githubactions.keyso.uk",
+          "alpn": null,
+          "enableSessionResumption": false,
+          "disableSystemRoot": false,
+          "minVersion": "",
+          "maxVersion": "",
+          "cipherSuites": "",
+          "fingerprint": "chrome",
+          "rejectUnknownSni": false,
+          "pinnedPeerCertificateChainSha256": null,
+          "pinnedPeerCertificatePublicKeySha256": null,
+          "curvePreferences": null,
+          "masterKeyLog": "",
+          "serverNameToVerify": ""
+        },
+        "realitySettings": null,
+        "rawSettings": null,
+        "tcpSettings": null,
+        "xhttpSettings": null,
+        "splithttpSettings": null,
+        "kcpSettings": null,
+        "grpcSettings": null,
+        "wsSettings": {
+          "host": "githubactions.keyso.uk",
+          "path": "/githubactions",
+          "headers": null,
+          "acceptProxyProtocol": false,
+          "heartbeatPeriod": 0
+        },
+        "httpupgradeSettings": null,
+        "sockopt": null
+      },
+      "proxySettings": null,
+      "mux": null
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "in"
+        ],
+        "outboundTag": "out"
+      }
+    ]
+  }
+}
