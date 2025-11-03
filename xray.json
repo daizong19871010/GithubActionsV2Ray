@@ -45,11 +45,17 @@
           "allowInsecure": true,
           "fingerprint": "chrome"
         },
+        "tcpSettings": {
+          "keepAlive": true,
+          "keepAliveInterval": 30,
+          "timeout": 0
+        },
         "wsSettings": {
           "path": "/githubactions",
           "headers": {
             "host": "githubactions.keyso.uk"
-          }
+          },
+          "pingInterval": 20
         }
       }
     },
