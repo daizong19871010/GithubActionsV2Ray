@@ -1,0 +1,34 @@
+{
+  "log": {
+    "loglevel": "debug",
+    "access": "./server_access.log",
+    "error": "./server_error.log"
+  },
+  "inbounds": [
+    {
+      "port": 7005,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "160f2a90-9f87-4452-b27a-e4c03341c138"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/articles"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ]
+}
