@@ -39,8 +39,18 @@ sudo nohup ./xray run -config ../xray.json > /dev/null &
 sudo nohup ./xray run -config ../bridge_guest.json > /dev/null &
 popd
 
+# 设置nginx_seq默认值为0
+nginx_seq=${nginx_seq:-0}
+echo "nginx_seq: $nginx_seq"
+
+# 动态修改nginx.conf，添加location /nginx_seq
+sed -i "/location \/articles {/i\\
+        location \/nginx_seq {\\
+            return 200 \"$nginx_seq\";\\
+            add_header Content-Type text/plain;\\
+        }" cloudflared/nginx.conf
+
 # 运行cloudflared
-echo "nginx_seq value: ${nginx_seq:-not_set}"
 sudo mkdir -p --mode=0755 /usr/share/keyrings
 curl -fsSL https://pkg.cloudflare.com/cloudflare-public-v2.gpg | sudo tee /usr/share/keyrings/cloudflare-public-v2.gpg >/dev/null
 echo 'deb [signed-by=/usr/share/keyrings/cloudflare-public-v2.gpg] https://pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
