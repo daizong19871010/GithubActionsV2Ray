@@ -9,7 +9,7 @@
       "tag": "in",
       "protocol": "socks",
       "listen": "127.0.0.1",
-      "port": 7002,
+      "port": 7006,
       "settings": {
         "udp": true
       }
