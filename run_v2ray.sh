@@ -48,7 +48,7 @@ nginx_seq=${nginx_seq:-0}
 echo "nginx_seq: $nginx_seq"
 
 # 设置cloudflared_token默认值
-cloudflared_token=${cloudflared_token:-"eyJhIjoiNGM3MzkzMWQ4YTQ2NjNlNTBhZDVlYmNmMWI4ZGJiOTUiLCJ0IjoiZTgxMmIzZmUtZjVhOS00NmUxLWI2NzUtNWEyZGRhY2E5ZTQ4IiwicyI6Ik9XRTFNekV3WVRVdE1EQmhNUzAwWmpKbExXSXhOak10TlRJMk16aGtaVE5sWVRKaSJ9"}
+cloudflared_token=${cloudflared_token:-"eyJhIjoiNGM3MzkzMWQ4YTQ2NjNlNTBhZDVlYmNmMWI4ZGJiOTUiLCJ0IjoiNzg0M2VlODMtODdlZS00NmJkLWFkMDctMTRhZmQzYzM5ZmQ3IiwicyI6Ik9EaG1NR1JsWlRVdFlUYzFOaTAwTlRJeUxUZzVOamt0T1dSbU1XRTVPRGMzTURJMyJ9"}
 echo "cloudflared_token: ${cloudflared_token:0:20}..." # 只打印前20个字符
 
 # 动态修改nginx.conf，添加location /nginx_seq
@@ -79,7 +79,7 @@ sudo nohup ./frpc -c frpc.toml > ../logs/frpc.log 2>&1 &
 echo "FRP client started, log: logs/frpc.log"
 popd
 
-# vless://160f2a90-9f87-4452-b27a-e4c03341c138@cloudflared.keyso.uk:443?security=tls&encryption=none&type=ws&host=cloudflared.keyso.uk&path=/articles&sni=cloudflared.keyso.uk&fp=chrome#cloudflared.keyso.uk
+# vless://160f2a90-9f87-4452-b27a-e4c03341c138@daizong19871010.keyso.uk:443?security=tls&encryption=none&type=ws&host=daizong19871010.keyso.uk&path=/articles&sni=daizong19871010.keyso.uk&fp=chrome#daizong19871010.keyso.uk
 pushd xray
 sudo ./xray run -config ../cloudflared/xray.server.config.json > /dev/null
 popd 
