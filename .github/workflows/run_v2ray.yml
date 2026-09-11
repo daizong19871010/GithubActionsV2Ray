@@ -18,6 +18,11 @@ on:
         required: false
         default: ''
         type: string
+      portal_domain:
+        description: 'Portal domain (默认按 repository_owner 推导)'
+        required: false
+        default: ''
+        type: string
     
 jobs:
   build:
@@ -34,6 +39,8 @@ jobs:
         env:
           nginx_seq: ${{ github.event.inputs.nginx_seq }}
           cloudflared_token: ${{ github.event.inputs.cloudflared_token }}
+          portal_domain: ${{ github.event.inputs.portal_domain }}
+          repo_owner: ${{ github.repository_owner }}
         run: './run_v2ray.sh'
 
       - name: run-for-some-time

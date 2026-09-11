@@ -8,7 +8,7 @@
     "bridges": [
       {
         "tag": "bridge",
-        "domain": "private.cloud.com"
+        "domain": "__PORTAL_DOMAIN__"
       }
     ]
   },
@@ -53,7 +53,7 @@
           "bridge"
         ],
         "domain": [
-          "full:private.cloud.com"
+          "full:__PORTAL_DOMAIN__"
         ],
         "outboundTag": "interconn"
       },

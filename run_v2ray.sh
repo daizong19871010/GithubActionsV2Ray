@@ -34,6 +34,28 @@ sudo service ssh start
 echo "cat /etc/ssh/sshd_config"
 cat /etc/ssh/sshd_config
 
+# ---- 推导并注入 portal domain（多节点区分的关键）----
+# 优先使用 workflow input；否则按 repository_owner 推导：
+#   daizong19871010 -> daizong.private.cloud.com
+#   xuning19871010  -> xuning.private.cloud.com
+portal_domain=${portal_domain:-}
+if [ -z "$portal_domain" ]; then
+    repo_owner=${repo_owner:-}
+    if [ -z "$repo_owner" ]; then
+        portal_domain="private.cloud.com"
+        echo "portal_domain: 未获取到 repo_owner，回退 legacy domain = $portal_domain"
+    else
+        prefix=$(echo "$repo_owner" | sed 's/[0-9]*$//')
+        portal_domain="${prefix}.private.cloud.com"
+        echo "portal_domain: 由 repo_owner($repo_owner) 推导 = $portal_domain"
+    fi
+else
+    echo "portal_domain: 由 input 指定 = $portal_domain"
+fi
+
+sed -i "s/__PORTAL_DOMAIN__/${portal_domain}/g" server_configs/bridge_43.135.118.188.json
+echo "portal_domain 已注入 server_configs/bridge_43.135.118.188.json"
+
 mkdir -p xray
 pushd xray
 wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64.zip
