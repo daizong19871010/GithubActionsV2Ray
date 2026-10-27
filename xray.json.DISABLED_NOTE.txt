@@ -1,0 +1,14 @@
+DISABLED 2026-10-27
+=================
+This file is the OLD Runner reverse-bridge client that dialed:
+  githubactions.keyso.uk:443  path=/githubactions
+
+dig-12 side portal is already dead (nginx /githubactions commented out; xray@bridge inactive).
+Leaving this config caused Cloudflare 404 storms (~45k in a few hours on 2026-10-26).
+
+run_v2ray.sh no longer starts this file.
+Working paths kept:
+  - server_configs/bridge_43.135.118.188.json  → dig-188 /tunnel_github_runner
+  - cloudflared + cloudflared/xray.server.config.json → /articles
+
+Do NOT re-enable dig-12 nginx /githubactions or xray@bridge without a deliberate plan.

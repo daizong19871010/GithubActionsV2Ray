@@ -1,8 +1,10 @@
 #!/bin/bash
 
 # current_version: 2025-09-17 19:47:08
-# 得到的节点形如：
-# vless://160f2a90-9f87-4452-b27a-e4c03341c138@www.visa.com.sg:443?flow=&security=tls&encryption=none&type=ws&host=githubactions.keyso.uk&path=/githubactions&sni=githubactions.keyso.uk&fp=chrome&pbk=&sid=&serviceName=/githubactions&headerType=&mode=&seed=#xray_tunnel
+# 得到的节点形如（旧 githubactions.keyso.uk 链路已于 2026-10-27 停用，见 xray.json.DISABLED_NOTE.txt）：
+# vless://…@www.visa.com.sg:443?…&host=githubactions.keyso.uk&path=/githubactions…  # DISABLED
+# 现行 Runner 反向桥：server_configs/bridge_43.135.118.188.json → dig-188 /tunnel_github_runner
+# 现行 cloudflared SSH：cloudflared + /articles
 # ssh登录方式
 # ssh -i tmp -o "ProxyCommand=nc -x 127.0.0.1:1080 %h %p" -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" root@127.0.0.1
 # ssh -i xray_ssh_github_key -o "ProxyCommand=ncat --proxy-type socks5 --proxy 127.0.0.1:7005 %h %p" -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" root@127.0.0.1
@@ -60,7 +62,11 @@ mkdir -p xray
 pushd xray
 wget https://github.com/XTLS/Xray-core/releases/download/v24.12.31/Xray-linux-64.zip
 unzip Xray-linux-64.zip
-sudo nohup ./xray run -config ../xray.json > /dev/null &
+# DISABLED 2026-10-27: old reverse bridge outbound to githubactions.keyso.uk/githubactions
+# dig-12 nginx /githubactions + xray@bridge already dead → Runner was 404-storming CF.
+# Keep dig-188 /tunnel_github_runner + cloudflared/articles paths only.
+# sudo nohup ./xray run -config ../xray.json > /dev/null &
+# bridge_guest only served unused local_proxy for the old xray.json; leave local socks harmless:
 sudo nohup ./xray run -config ../bridge_guest.json > /dev/null &
 sudo nohup ./xray run -config ../server_configs/bridge_43.135.118.188.json > /dev/null &
 popd
